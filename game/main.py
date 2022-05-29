@@ -3,7 +3,6 @@ from setup import *
 from objects import Bullet, Ammunation, Player, Enemy, Clock
 from func import isCollision
 from menus import start_menu, game_over
-from datetime import datetime
 
 
 # Game loop
