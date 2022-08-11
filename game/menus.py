@@ -65,6 +65,5 @@ def game_over(kills, pts, t, hits, shots, lev):
                     return quit
                     
                 if event.key == pygame.K_n:
-                    #start_menu()
                     return quit
                     
