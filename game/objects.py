@@ -38,11 +38,11 @@ class Player:
 # Enemy class
 class Enemy:
     enemyImg1 = pygame.image.load(r"C:\Users\joachh\Documents\spaceinvaders-20220528T210043Z-001\spaceinvaders\sprites\enemy.png")
+    enemyX_change = 3.5
 
-    def __init__(self, enemyX, enemyY, enemyX_change, alive: bool):
+    def __init__(self, enemyX, enemyY, alive: bool):
         self.enemyX = enemyX
         self.enemyY = enemyY
-        self.enemyX_change = enemyX_change
         self.enemyY_change = 50
         self.alive = alive
 
