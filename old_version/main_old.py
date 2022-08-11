@@ -1,3 +1,5 @@
+# My first version of the game with all the code in one file
+
 import time, math, pygame, random, sys
 rand = random.randint
 

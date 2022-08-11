@@ -81,7 +81,6 @@ class Bullet:
 # Ammunition class
 class Ammunation:
     ammo_left = 5
-    magazines_left = 2
     
 # Game clock
 class Clock:

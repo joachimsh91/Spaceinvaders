@@ -1,3 +1,4 @@
+# Current game version
 import time, pygame, random
 from setup import *
 from objects import Bullet, Ammunation, Player, Enemy, Clock
@@ -48,20 +49,16 @@ def main():
                     ship.playerX_change= -3.5
                 if event.key == pygame.K_RIGHT:
                     ship.playerX_change = 3.5
-                if event.key == pygame.K_SPACE and p1_bullet.ready is True and ammo.magazines_left > 0:
+                if event.key == pygame.K_SPACE and p1_bullet.ready is True:
                     p1_bullet.shoot(p1_bullet.bulletX, p1_bullet.bulletY)
                     p1_bullet.shots_fired += 1
                     print(p1_bullet.shots_fired)
                     ammo.ammo_left -= 1
                     print("Remaining ammunition: " + str(ammo.ammo_left))
-                if ammo.ammo_left == 0 and ammo.magazines_left > 0:
+                if ammo.ammo_left == 0:
                     print("Empty magazine! Reloading... ")
                     ammo.ammo_left = 5
-                    ammo.magazines_left -= 1
-                    print("Remaining magazines: " + str(ammo.magazines_left))
-                if ammo.magazines_left == 0:
-                    print("No more ammo!")
-                    ammo.magazines_left = 2
+                    
 
             # If key is realesed no movement
             if event.type == pygame.KEYUP:
@@ -142,97 +139,6 @@ def main():
         ship.show_score(270, 10)
         ship.show_level(720, 10)
         Clock.show_time(450, 10, end, start)
-
-        """ # Level 1
-            if en1[e].alive and en1[e].enemyX <= 0 and 10 <= ship.playerScore <= 10:
-                ship.playerLevel = 1
-                en1[e].enemyX_change = 1.0
-                en1[e].enemyY += en1[e].enemyY_change
-    
-            # Level 2
-            if en1[e].alive and en1[e].enemyX <= 0 and 10 <= ship.playerScore <= 20:
-                ship.playerLevel = 2
-                en1[e].enemyX_change = 2.0
-                en1[e].enemyY += en1[e].enemyY_change
-
-            if en1[e].alive and en1[e].enemyX >= 700 and 10 <= ship.playerScore <= 20:
-                en1[e].enemyX_change = - 2.0
-                en1[e].enemyY += en1[e].enemyY_change
-
-            # Level 3
-            if en1[e].alive and en1[e].enemyX <= 0 and 20 <= ship.playerScore <= 30:
-                ship.playerLevel = 3
-                en1[e].enemyX_change = 3.0
-                en1[e].enemyY += en1[e].enemyY_change
-
-            if en1[e].alive and en1[e].enemyX >= 700 and 20 <= ship.playerScore <= 30:
-                ship.playerLevel = 3
-                en1[e].enemyX_change = - 3.0
-                en1[e].enemyY += en1[e].enemyY_change
-
-            # Level 4
-            if en1[e].alive and en1[e].enemyX <= 0 and 30 <= ship.playerScore <= 40:
-                ship.playerLevel = 4
-                en1[e].enemyX_change = 4.0
-                en1[e].enemyY += en1[e].enemyY_change
-
-            if en1[e].alive and en1[e].enemyX >= 700 and 30 <= ship.playerScore <= 40:
-                ship.playerLevel = 4
-                en1[e].enemyX_change = - 4.0
-                en1[e].enemyY += en1[e].enemyY_change
-
-            # Level 5
-            if en1[e].alive and en1[e].enemyX <= 0 and 40 <= ship.playerScore <= 50:
-                ship.playerLevel = 5
-                en1[e].enemyX_change = 5.0
-                en1[e].enemyY += en1[e].enemyY_change
-
-            if en1[e].alive and en1[e].enemyX >= 700 and 40 <= ship.playerScore <= 50:
-                ship.playerLevel = 5
-                en1[e].enemyX_change = - 5.0
-                en1[e].enemyY += en1[e].enemyY_change"""
-
-        """ # Level popup
-        if ship.playerLevel == 1:
-            if total < 3:
-                screen.blit(level1, (width/2 - (level1.get_width()/2), (height/2 + level1.get_height() * 0)))
-
-        if ship.playerScore != 10:
-            t1 = int(time.time())
-
-        if ship.playerScore == 10:
-            t2 = int(time.time())
-            print(t2-t1)
-            if t2 - t1 < 3:
-                screen.blit(level2, (width/2 - (level2.get_width()/2), (height/2 + level2.get_height() * 0)))
-        
-        if ship.playerScore != 20:
-            t1 = int(time.time())
-            
-        if ship.playerScore == 20:
-            t2 = int(time.time())
-            if t2 - t1 < 4:
-                screen.blit(level3, (width/2 - (level3.get_width()/2), (height/2 + level3.get_height() * 0)))
-
-        if ship.playerScore != 30:
-            t1 = int(time.time())
-            
-        if ship.playerScore == 30:
-            t2 = int(time.time())
-            if t2 - t1 < 4:
-                screen.blit(level4, (width/2 - (level4.get_width()/2), (height/2 + level4.get_height() * 0)))
-        
-        if ship.playerScore != 40:
-            t1 = int(time.time())
-            
-        if ship.playerScore == 40:
-            t2 = int(time.time())
-            if t2 - t1 < 4:
-                screen.blit(level5, (width/2 - (level5.get_width()/2), (height/2 + level5.get_height() * 0)))
-                
-        """
-
-
 
         if ship.playerLife == 0:
                 quit = game_over(ship.enemykilled, ship.playerScore, total, ship.hits, p1_bullet.shots_fired, ship.playerLevel)
